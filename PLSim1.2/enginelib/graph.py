@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("TKAgg")
 import matplotlib.pyplot as plt
+from os import path, makedirs
 
 num_graphs = 1
 
@@ -115,6 +116,8 @@ def make_power_graph(input_data: list, int_period, x_label, y_label, title, lege
     plt.ylabel(y_label, fontsize=6)
     plt.gca().yaxis.grid(True,linestyle=':',linewidth=0.2,color='k')
 
+    if not path.exists("./graphs"):
+        makedirs("graphs")
     plt.savefig("./graphs/graph" + str(num_graphs) + ".png")
     num_graphs += 1
 
